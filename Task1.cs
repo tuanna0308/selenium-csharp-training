@@ -13,15 +13,17 @@ namespace TrainingCsharpSelenium
         [SetUp]
         public void Setup()
         {
-            string chromeDriverPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\browserDrivers\";
-            driver = new FirefoxDriver(chromeDriverPath);
+            string driverPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\browserDrivers\";
+            
+            driver = new ChromeDriver(driverPath);
+            // driver = new FirefoxDriver(driverPath);
+            // driver = new OperaDriver(driverPath);
+            // driver = new EdgeDriver(driverPath);
 
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
-
             driver.Navigate().GoToUrl("https://www.google.com/");
-
         }
 
         [Test]
